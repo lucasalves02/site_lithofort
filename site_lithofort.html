@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lithofort - Nutrição de Alta Performance</title>
+    <style>
+        :root {
+            --primary: #162c53;
+            --primary-dark: #0f1e3a;
+            --secondary: #76bc43;
+            --secondary-dark: #5fa332;
+            --accent: #009fe3;
+            --bg-light: #f4f7f9;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --text-light: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            padding-top: 90px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-image {
+            max-height: 36px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .btn-header {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: var(--secondary-dark);
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 60%, var(--primary-dark));
+            color: var(--text-light);
+            padding: 160px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: var(--secondary);
+        }
+
+        .hero-text .subtitle {
+            font-size: 20px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            margin-bottom: 35px;
+            color: #e2e8f0;
+            max-width: 600px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-badge {
+            background-color: var(--bg-white);
+            color: var(--primary);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-left: 5px solid var(--secondary);
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .product-badge .brand {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-badge .tagline {
+            background-color: var(--primary);
+            color: var(--text-light);
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .product-badge ul {
+            list-style: none;
+        }
+
+        .product-badge ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+        }
+
+        .product-badge ul li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-bg-white {
+            background-color: var(--bg-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s, border-top-color 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--secondary);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(22, 44, 83, 0.05);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--primary);
+        }
+
+        .benefit-card:hover .benefit-icon svg {
+            fill: var(--secondary);
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: var(--text-dark);
+            text-align: justify;
+        }
+
+        /* Technical Specs Section */
+        .specs-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+
+        .specs-table th {
+            background-color: var(--primary);
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-table td.label {
+            font-weight: 600;
+            color: var(--primary);
+            width: 40%;
+            background-color: rgba(22, 44, 83, 0.02);
+        }
+
+        .protocol-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #d97706;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .protocol-box h4 {
+            color: #b45309;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .protocol-box ul {
+            list-style-type: none;
+        }
+
+        .protocol-box ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .protocol-box ul li::before {
+            content: '•';
+            color: #d97706;
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Applications / Crop Section */
+        .app-table-container {
+            background: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .app-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .app-table th {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 18px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .app-table td {
+            padding: 18px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        .crop-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .app-table ul {
+            padding-left: 15px;
+        }
+
+        .app-table li {
+            margin-bottom: 5px;
+        }
+
+        /* --- SEÇÃO DE REVENDAS MODIFICADA --- */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 40px;
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-container label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .filter-select {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-select:focus {
+            border-color: var(--secondary);
+        }
+
+        .revendas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .revenda-card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .revenda-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .revenda-info h4 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .revenda-meta {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .revenda-meta.endereco {
+            color: var(--text-muted);
+            font-style: normal;
+            line-height: 1.4;
+        }
+
+        .badge-estado {
+            background-color: rgba(0, 159, 227, 0.1);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .btn-wpp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #25d366;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn-wpp:hover {
+            background-color: #1ebd58;
+        }
+
+        .btn-wpp svg {
+            fill: #fff;
+            width: 18px;
+            height: 18px;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: #fffbeb;
+            border: 2px dashed #d97706;
+            border-radius: 8px;
+            color: #b45309;
+            display: none;
+        }
+
+        .empty-state h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state a {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* --- FIM DA SEÇÃO MODIFICADA --- */
+
+        /* Partnership / Distributor Form Section */
+        .partner-section {
+            background: linear-gradient(135deg, var(--primary-dark) 30%, var(--primary));
+            color: var(--text-light);
+        }
+
+        .partner-section .section-title h2 {
+            color: var(--text-light);
+        }
+
+        .partner-wrapper {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .partner-pitch h3 {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .partner-pitch p {
+            font-size: 16px;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+        }
+
+        .pitch-benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .pitch-benefit-icon {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pitch-benefit-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--secondary);
+        }
+
+        .pitch-benefit-text h4 {
+            font-size: 16px;
+            margin-bottom: 3px;
+            color: var(--text-light);
+        }
+
+        .pitch-benefit-text p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        /* Form Styling */
+        .form-container {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            color: var(--text-dark);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background-color: var(--bg-white);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--secondary);
+            color: var(--text-light);
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(118, 188, 67, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1426;
+            color: #cbd5e1;
+            padding: 40px 0;
+            font-size: 14px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .footer-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-grid, .specs-wrapper, .partner-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 120px 0 60px 0;
+                text-align: center;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .hero-image-container {
+                margin-top: 30px;
+            }
+            body {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .hero-text h1 {
+                font-size: 30px;
+            }
+            body {
+                padding-top: 170px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="assets/logo_lithofort.png" alt="Lithofort" class="logo-image">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#produto">Produto</a></li>
+                    <li><a href="#beneficios">Benefícios</a></li>
+                    <li><a href="#aplicacao">Aplicações</a></li>
+                    <li><a href="#revendas">Onde Encontrar</a></li>
+                    <li><a href="#distribuidor" class="btn-header">Seja Distribuidor</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>Nutrição de <span>Alta Performance</span> para suas Culturas</h1>
+                    <div class="subtitle">Fertilizante Mineral Biogênico de Alta Reatividade Superficial</div>
+                    <p>Fertilizante biogênico e bioestimulador de ação físico-química imediata. Potencialize seu manejo, maximize o enraizamento e garanta produtividade superior.</p>
+                    <div class="hero-ctas">
+                        <a href="#distribuidor" class="btn-primary">Seja um Distribuidor Autorizado</a>
+                        <a href="#revendas" class="btn-secondary">Encontre uma Revenda</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <div class="product-badge">
+                        <div class="brand">LITHOFORT</div>
+                        <div class="tagline">Origem 100% Biogênica (Marinha)</div>
+                        <ul>
+                            <li>Granulometria Exclusiva 600 mesh</li>
+                            <li>Natureza Física: Pó Fino Micronizado</li>
+                            <li>Alta Porosidade Estrutural</li>
+                            <li>Ação Imediata: Via Solo ou Foliar</li>
+                            <li>Pronto para Uso!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produto" class="section-bg-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Especificações do Produto</h2>
+                <p>Alta tecnologia mineral marinha extraída de fontes sustentáveis para entregar nutrição imediata e de altíssima eficiência.</p>
+            </div>
+            
+            <div class="specs-wrapper">
+                <div>
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Garantias e Atributos Técnicos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label">Cálcio (Ca)</td>
+                                <td class="value">32,0%</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Magnésio (Mg)</td>
+                                <td class="value">2,0%</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Micronutrientes</td>
+                                <td class="value">> 20 Elementos Traço</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Granulometria</td>
+                                <td class="value">600 mesh</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Natureza Física</td>
+                                <td class="value">Pó Fino Micronizado</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Formatos de Embalagem</td>
+                                <td class="value">Pouch 1 kg / Big Bag 1000 kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="protocol-box">
+                    <h4>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#b45309">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        Protocolo de Preparo Técnico
+                    </h4>
+                    <ul>
+                        <li><strong>Ordem de Mistura:</strong> O Lithofort deve ser sempre o primeiro ingrediente a entrar no tanque de pulverização, previamente preenchido com metade da água total.</li>
+                        <li><strong>Agitação Contínua:</strong> Mantenha o agitador ligado continuamente durante toda a operação para assegurar a homogeneidade e estabilidade da suspensão mineral.</li>
+                        <li><strong>Incompatibilidades:</strong> Evite misturas na mesma calda com soluções ácidas concentradas ou fontes livres de fósforo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vantagens Gerais e Fisiológicas</h2>
+                <p>Descubra como a estrutura nanométrica e biogênica do Lithofort transforma o ambiente produtivo.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Porosidade Estrutural</h3>
+                    <p>Origem biogênica que resulta em uma superfície de contato geometricamente maior. Confere uma taxa de reatividade com o solo expressivamente rápida e alto poder corretivo local.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4.97 0 9-4.03 9-9 0-4.97-4.03-9-9-9S3 7.03 3 12c0 4.97 4.03 9 9 9z"/><path d="M8.5 12.5c.6 1.38 1.86 2.5 3.5 2.5 1.64 0 2.9-1.12 3.5-2.5"/><path d="M12 8.5v1.5"/><path d="M12 13.5v2"/><path d="M10 10.5h4"/></svg>
+                    </div>
+                    <h3>Disponibilidade Nutricional Elevada</h3>
+                    <p>Carbonatos organominerais associados a compostos orgânicos marinhos (Lithothamnium), oferecendo solubilização imediata e translocação foliar de Cálcio e Magnésio superior a fontes tradicionais de rocha moída.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                    </div>
+                    <h3>Sinergia e Eficiência de Fósforo (P)</h3>
+                    <p>Altera de forma estratégica o micro-pH na rizosfera, reduzindo severamente a fixação de Fósforo nas argilas do solo, liberando o nutriente para o aproveitamento radicular e otimizando a adubação de base (NPK).</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </div>
+                    <h3>Maximização Radicular e Proteção</h3>
+                    <p>Incremento expressivo de comprimento e densidade de raíces superior a 40%, gerando maior proteção hídrica e mecânica em safras sob severos estresses climáticos.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8v8H8z"/><path d="M8 8l8 8"/></svg>
+                    </div>
+                    <h3>Elevação de Shelf-Life Comercial</h3>
+                    <p>Garante a firmeza de polpa e a espessura de parede celular ideais para transporte e comercialização em frutas e hortaliças. Combate o tip burn e elimina o "fundo preto" (podridão apical).</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 3.87 3.13 7 7 7s7-3.13 7-7c0-3.87-3.13-7-7-7zm0 16c-2.5 0-4.71-1.28-6-3.22L6 11.5A5.95 5.95 0 0 0 12 15a5.95 5.95 0 0 0 6-3.5l1 3.28C16.71 16.72 14.5 18 12 18z"/><path d="M12 9.5v4"/><path d="M10 11.5h4"/></svg>
+                    </div>
+                    <h3>Melhora da Qualidade de Safras</h3>
+                    <p>Auxilia no desenvolvimento de grãos e frutos mais firmes e homogêneos, resultando em melhor qualidade comercial e menor descarte pós-colheita.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aplicacao" class="section-bg-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recomendações de Uso e Culturas</h2>
+                <p>As dosagens sugeridas de Lithofort estão alinhadas com as pesquisas mais recentes sobre a aplicação de Lithothamnium micronizado nas mais diversas culturas.</p>
+            </div>
+
+            <div class="app-table-container">
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Cultura</th>
+                            <th style="width: 35%;">Dosagem Recomendada</th>
+                            <th style="width: 40%;">Época de Aplicação (Timing)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="crop-name">Grandes Culturas<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Soja, Milho, Feijão)</span></td>
+                            <td>
+                                <ul>
+                                    <li><strong>Tratamento de Sementes (TS):</strong> 100g a 200g por 100 kg de sementes</li>
+                                    <li><strong>Foliar:</strong> 1,0 a 2,0 kg/ha</li>
+                                </ul>
+                            </td>
+                            <td>Aplicação foliar em estádios V4 a V6 para estimular a taxa fotossintética, e na Pré-Florescência / R1 para garantir a fixação de flores e reduzir o abortamento de vagens/grãos.</td>
+                        </tr>
+                        <tr>
+                            <td class="crop-name">Café e Citros</td>
+                            <td>
+                                <ul>
+                                    <li><strong>Produção de Mudas:</strong> 2g a 5g por Litro de água</li>
+                                    <li><strong>Foliar:</strong> 2,0 a 3,0 kg/ha</li>
+                                </ul>
+                            </td>
+                            <td>Mudas: via drench (a cada 15-30 dias).<br>Foliar: aplicação no preparo da florada (pós-colheita/limpeza) e no pós-vingamento dos frutos (estádio chumbinho).</td>
+                        </tr>
+                        <tr>
+                            <td class="crop-name">Fruticultura de Valor<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Mamão, Manga, Uva)</span></td>
+                            <td>
+                                <ul>
+                                    <li><strong>Foliar Contínuo:</strong> 1,5 a 2,5 g por Litro de água</li>
+                                    <li><strong>Fertirrigação:</strong> 2,0 a 4,0 kg/ha</li>
+                                </ul>
+                            </td>
+                            <td>Aplicações quinzenais ou mensais direcionadas de forma precisa para folhas novas e frutos em fase de expansão celular.</td>
+                        </tr>
+                        <tr>
+                            <td class="crop-name">Hortaliças de Fruto<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Tomate, Pimentão, etc)</span></td>
+                            <td>
+                                <ul>
+                                    <li><strong>Foliar:</strong> 2,0 a 3,0 g por Litro de calda</li>
+                                </ul>
+                            </td>
+                            <td>Frequência semanal ou quinzenal, iniciando desde o florescimento pleno até a maturação final dos frutos. Previne ativamente o "fundo preto".</td>
+                        </tr>
+                        <tr>
+                            <td class="crop-name">Folhosas<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Alface, Brócolis, etc)</span></td>
+                            <td>
+                                <ul>
+                                    <li><strong>Foliar:</strong> 1,5 a 2,0 g por Litro de calda</li>
+                                </ul>
+                            </td>
+                            <td>2 a 3 aplicações estrategicamente distribuídas ao longo do ciclo (pós-transplante, meio do ciclo produtivo e 7 dias antes da colheita final).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="revendas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Onde Encontrar o Lithofort</h2>
+                <p>Selecione seu estado abaixo para localizar a revenda autorizada mais próxima de você.</p>
+            </div>
+
+            <div class="filter-container">
+                <label for="estado-filtro">Filtrar por Estado:</label>
+                <select id="estado-filtro" class="filter-select" onchange="filtrarRevendas()">
+                    <option value="todos">Todos os Estados</option>
+                    <option value="SE">Sergipe (SE)</option>
+                    <option value="BA">Bahia (BA)</option>
+                    <option value="GO">Goiás (GO)</option>
+                    <option value="MG">Minas Gerais (MG)</option>
+                    <option value="MT">Mato Grosso (MT)</option>
+                    <option value="PR">Paraná (PR)</option>
+                </select>
+            </div>
+
+            <div class="revendas-grid" id="lista-revendas">
+                
+                <div class="revenda-card" data-state="SE">
+                    <div class="revenda-info">
+                        <span class="badge-estado">Sergipe</span>
+                        <h4>Bioagro Soluções Agropecuárias</h4>
+                        <div class="revenda-meta">
+                            <strong>Município:</strong> Aracaju - SE
+                        </div>
+                        <div class="revenda-meta endereco">
+                            Av. Chanceler Osvaldo Aranha, 746
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5579998278540?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort." target="_blank" class="btn-wpp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.907-11.893 11.907-2.006-.001-3.974-.507-5.731-1.464L0 24zm6.29-4.114l.374.222c1.608.956 3.46 1.459 5.355 1.461 5.421 0 9.832-4.332 9.835-9.655.001-2.577-1.002-5.001-2.824-6.824-1.822-1.824-4.246-2.827-6.828-2.828-5.424 0-9.836 4.335-9.839 9.658-.001 2.053.535 4.054 1.551 5.81l.243.42L1.925 21.847l4.422-1.961zm11.367-7.24c-.267-.134-1.585-.783-1.832-.873-.247-.089-.427-.134-.607.134-.18.267-.697.873-.853 1.05-.157.177-.315.197-.582.063-.266-.134-1.127-.415-2.147-1.326-.793-.707-1.329-1.582-1.485-1.848-.156-.266-.016-.41.117-.542.12-.12.267-.313.4-.469.133-.157.177-.267.266-.446.089-.178.045-.335-.022-.469-.067-.134-.607-1.464-.832-2.007-.219-.53-.443-.457-.607-.465-.157-.008-.337-.01-.517-.01-.18 0-.473.067-.719.335-.247.267-.944.922-.944 2.25 0 1.328.966 2.612 1.1 2.791.135.179 1.901 2.904 4.606 4.069.643.277 1.144.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.585-.648 1.81-1.27.225-.623.225-1.157.157-1.27-.067-.113-.247-.18-.513-.313z"/></svg>
+                        (79) 99827-8540
+                    </a>
+                </div>
+                <div class="revenda-card" data-state="SE">
+                    <div class="revenda-info">
+                        <span class="badge-estado">Sergipe</span>
+                        <h4>Terra Fértil Agro</h4>
+                        <div class="revenda-meta">
+                            <strong>Município:</strong> Monte Alegre - SE
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5579999769682?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort." target="_blank" class="btn-wpp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.907-11.893 11.907-2.006-.001-3.974-.507-5.731-1.464L0 24zm6.29-4.114l.374.222c1.608.956 3.46 1.459 5.355 1.461 5.421 0 9.832-4.332 9.835-9.655.001-2.577-1.002-5.001-2.824-6.824-1.822-1.824-4.246-2.827-6.828-2.828-5.424 0-9.836 4.335-9.839 9.658-.001 2.053.535 4.054 1.551 5.81l.243.42L1.925 21.847l4.422-1.961zm11.367-7.24c-.267-.134-1.585-.783-1.832-.873-.247-.089-.427-.134-.607.134-.18.267-.697.873-.853 1.05-.157.177-.315.197-.582.063-.266-.134-1.127-.415-2.147-1.326-.793-.707-1.329-1.582-1.485-1.848-.156-.266-.016-.41.117-.542.12-.12.267-.313.4-.469.133-.157.177-.267.266-.446.089-.178.045-.335-.022-.469-.067-.134-.607-1.464-.832-2.007-.219-.53-.443-.457-.607-.465-.157-.008-.337-.01-.517-.01-.18 0-.473.067-.719.335-.247.267-.944.922-.944 2.25 0 1.328.966 2.612 1.1 2.791.135.179 1.901 2.904 4.606 4.069.643.277 1.144.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.585-.648 1.81-1.27.225-.623.225-1.157.157-1.27-.067-.113-.247-.18-.513-.313z"/></svg>
+                        (79) 99976-9682
+                    </a>
+                </div>
+
+                <div class="revenda-card" data-state="SE">
+                    <div class="revenda-info">
+                        <span class="badge-estado">Sergipe</span>
+                        <h4>Rações San Lorenzo</h4>
+                        <div class="revenda-meta">
+                            <strong>Município:</strong> Nossa Senhora Aparecida - SE
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5579999210286?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort." target="_blank" class="btn-wpp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.907-11.893 11.907-2.006-.001-3.974-.507-5.731-1.464L0 24zm6.29-4.114l.374.222c1.608.956 3.46 1.459 5.355 1.461 5.421 0 9.832-4.332 9.835-9.655.001-2.577-1.002-5.001-2.824-6.824-1.822-1.824-4.246-2.827-6.828-2.828-5.424 0-9.836 4.335-9.839 9.658-.001 2.053.535 4.054 1.551 5.81l.243.42L1.925 21.847l4.422-1.961zm11.367-7.24c-.267-.134-1.585-.783-1.832-.873-.247-.089-.427-.134-.607.134-.18.267-.697.873-.853 1.05-.157.177-.315.197-.582.063-.266-.134-1.127-.415-2.147-1.326-.793-.707-1.329-1.582-1.485-1.848-.156-.266-.016-.41.117-.542.12-.12.267-.313.4-.469.133-.157.177-.267.266-.446.089-.178.045-.335-.022-.469-.067-.134-.607-1.464-.832-2.007-.219-.53-.443-.457-.607-.465-.157-.008-.337-.01-.517-.01-.18 0-.473.067-.719.335-.247.267-.944.922-.944 2.25 0 1.328.966 2.612 1.1 2.791.135.179 1.901 2.904 4.606 4.069.643.277 1.144.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.585-.648 1.81-1.27.225-.623.225-1.157.157-1.27-.067-.113-.247-.18-.513-.313z"/></svg>
+                        (79) 99921-0286
+                    </a>
+                </div>
+
+                <div class="revenda-card" data-state="SE">
+                    <div class="revenda-info">
+                        <span class="badge-estado">Sergipe</span>
+                        <h4>Construagro Barbosa</h4>
+                        <div class="revenda-meta">
+                            <strong>Município:</strong> Itabaianinha - SE
+                        </div>
+                        <div class="revenda-meta endereco">
+                            Rua Zacarias Alves, 59
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5579999825080?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort." target="_blank" class="btn-wpp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.907-11.893 11.907-2.006-.001-3.974-.507-5.731-1.464L0 24zm6.29-4.114l.374.222c1.608.956 3.46 1.459 5.355 1.461 5.421 0 9.832-4.332 9.835-9.655.001-2.577-1.002-5.001-2.824-6.824-1.822-1.824-4.246-2.827-6.828-2.828-5.424 0-9.836 4.335-9.839 9.658-.001 2.053.535 4.054 1.551 5.81l.243.42L1.925 21.847l4.422-1.961zm11.367-7.24c-.267-.134-1.585-.783-1.832-.873-.247-.089-.427-.134-.607.134-.18.267-.697.873-.853 1.05-.157.177-.315.197-.582.063-.266-.134-1.127-.415-2.147-1.326-.793-.707-1.329-1.582-1.485-1.848-.156-.266-.016-.41.117-.542.12-.12.267-.313.4-.469.133-.157.177-.267.266-.446.089-.178.045-.335-.022-.469-.067-.134-.607-1.464-.832-2.007-.219-.53-.443-.457-.607-.465-.157-.008-.337-.01-.517-.01-.18 0-.473.067-.719.335-.247.267-.944.922-.944 2.25 0 1.328.966 2.612 1.1 2.791.135.179 1.901 2.904 4.606 4.069.643.277 1.144.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.585-.648 1.81-1.27.225-.623.225-1.157.157-1.27-.067-.113-.247-.18-.513-.313z"/></svg>
+                        (79) 99982-5080
+                    </a>
+                </div>
+
+                <div class="revenda-card" data-state="SE">
+                    <div class="revenda-info">
+                        <span class="badge-estado">Sergipe</span>
+                        <h4>Zezelo Fertilizantes</h4>
+                        <div class="revenda-meta">
+                            <strong>Município:</strong> Areia Branca - SE
+                        </div>
+                        <div class="revenda-meta endereco">
+                            Povoado Serra Comprida
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5579999643624?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort." target="_blank" class="btn-wpp">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.907-11.893 11.907-2.006-.001-3.974-.507-5.731-1.464L0 24zm6.29-4.114l.374.222c1.608.956 3.46 1.459 5.355 1.461 5.421 0 9.832-4.332 9.835-9.655.001-2.577-1.002-5.001-2.824-6.824-1.822-1.824-4.246-2.827-6.828-2.828-5.424 0-9.836 4.335-9.839 9.658-.001 2.053.535 4.054 1.551 5.81l.243.42L1.925 21.847l4.422-1.961zm11.367-7.24c-.267-.134-1.585-.783-1.832-.873-.247-.089-.427-.134-.607.134-.18.267-.697.873-.853 1.05-.157.177-.315.197-.582.063-.266-.134-1.127-.415-2.147-1.326-.793-.707-1.329-1.582-1.485-1.848-.156-.266-.016-.41.117-.542.12-.12.267-.313.4-.469.133-.157.177-.267.266-.446.089-.178.045-.335-.022-.469-.067-.134-.607-1.464-.832-2.007-.219-.53-.443-.457-.607-.465-.157-.008-.337-.01-.517-.01-.18 0-.473.067-.719.335-.247.267-.944.922-.944 2.25 0 1.328.966 2.612 1.1 2.791.135.179 1.901 2.904 4.606 4.069.643.277 1.144.443 1.536.567.646.206 1.233.177 1.697.108.518-.077 1.585-.648 1.81-1.27.225-.623.225-1.157.157-1.27-.067-.113-.247-.18-.513-.313z"/></svg>
+                        (79) 99964-3624
+                    </a>
+                </div>
+
+
+                <div class="empty-state" id="aviso-vazio">
+                    <h4>Ainda não temos revendas oficiais neste estado.</h4>
+                    <p>Se você possui uma empresa de insumos agrícolas nesta região e deseja comercializar o Lithofort com exclusividade, <a href="#distribuidor">preencha nosso formulário de parceria abaixo</a> para se tornar um distribuidor homologado!</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="distribuidor" class="partner-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Seja um Distribuidor Autorizado Lithofort</h2>
+                <p>Faça parte da nossa rede exclusiva de parceiros comerciais e leve uma tecnologia de nutrição revolucionária para a sua região.</p>
+            </div>
+
+            <div class="partner-wrapper">
+                <div class="partner-pitch">
+                    <h3>Por que distribuir o Lithofort?</h3>
+                    <p>Oferecemos um modelo de negócio B2B robusto, focado em alta lucratividade para o lojista e resultados incontestáveis para o produtor rural.</p>
+                    
+                    <div class="pitch-benefit-item">
+                        <div class="pitch-benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+                        </div>
+                        <div class="pitch-benefit-text">
+                            <h4>Alta Demanda Tecnológica</h4>
+                            <p>Produto inovador micronizado (600 mesh) com solubilidade imediata e apelo técnico fortíssimo no campo.</p>
+                        </div>
+                    </div>
+
+                    <div class="pitch-benefit-item">
+                        <div class="pitch-benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <div class="pitch-benefit-text">
+                            <h4>Suporte Comercial e Técnico Integral</h4>
+                            <p>Treinamentos para sua equipe de vendas, materiais de PDV, dias de campo e suporte agronômico dedicado.</p>
+                        </div>
+                    </div>
+
+                    <div class="pitch-benefit-item">
+                        <div class="pitch-benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                        </div>
+                        <div class="pitch-benefit-text">
+                            <h4>Excelentes Margens e Exclusividade</h4>
+                            <p>Política comercial justa e protegida, garantindo lucratividade sustentável para parceiros homologados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <form action="#" method="POST" onsubmit="alert('Obrigado pelo interesse! Nossa equipe de expansão comercial entrará em contato em até 24 horas úteis.'); return false;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo">Cargo / Função</label>
+                                <input type="text" id="cargo" name="cargo" placeholder="Ex: Diretor, Comprador" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Nome da Empresa</label>
+                                <input type="text" id="empresa" name="empresa" placeholder="Razão Social ou Fantasia" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail Corporativo</label>
+                                <input type="email" id="email" name="email" placeholder="seuemail@empresa.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp / Celular</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 99999-9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="segmento">Segmento Principal</label>
+                                <select id="segmento" name="segmento" required>
+                                    <option value="" disabled selected>Selecione seu perfil...</option>
+                                    <option value="revenda">Revenda Agrícola</option>
+                                    <option value="cooperativa">Cooperativa</option>
+                                    <option value="distribuidor">Distribuidora de Insumos</option>
+                                    <option value="consultoria">Consultoria / Agrônomo Autônomo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="regiao">Região de Interesse</label>
+                                <input type="text" id="regiao" name="regiao" placeholder="Cidade / Estado desejado" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="mensagem">Estrutura Atual & Marcas que já Trabalha (Opcional)</label>
+                                <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte-nos brevemente sobre sua equipe de vendas e área de atuação geográfica..."></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-submit" onclick="enviarWhatsapp()">Enviar Solicitação de Parceria</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-wrapper">
+            <div>
+                <p>&copy; 2026 Lithofort. Todos os direitos reservados.</p>
+                <p style="font-size:12px; color:var(--text-muted); margin-top:5px;">Inspirado na Ficha Técnica YaraMila - Tecnologia Baseada em Lithothamnium.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#produto">Especificações</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#aplicacao">Recomendações</a>
+                <a href="#revendas">Revendas</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filtrarRevendas() {
+            const filtro = document.getElementById('estado-filtro').value;
+            const cards = document.querySelectorAll('.revenda-card');
+            const avisoVazio = document.getElementById('aviso-vazio');
+            let visiveis = 0;
+
+            cards.forEach(card => {
+                const state = card.getAttribute('data-state');
+                if (filtro === 'todos' || state === filtro) {
+                    card.style.display = 'flex';
+                    visiveis++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Se nenhum card for exibido, ativa a mensagem de captação B2B
+            if (visiveis === 0) {
+                avisoVazio.style.display = 'block';
+            } else {
+                avisoVazio.style.display = 'none';
+            }
+        }
+
+        function enviarWhatsapp() {
+            const nome = document.getElementById('nome').value.trim();
+            const cargo = document.getElementById('cargo').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+            const cnpj = document.getElementById('cnpj').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const segmento = document.getElementById('segmento').value;
+            const regiao = document.getElementById('regiao').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim() || 'Sem informações adicionais fornecidas.';
+
+            if (!nome || !cargo || !empresa || !cnpj || !email || !whatsapp || !segmento || !regiao) {
+                alert('Por favor, preencha todos os campos obrigatórios antes de enviar a solicitação.');
+                return;
+            }
+
+            const texto = `Olá, gostaria de solicitar parceria.\n\n` +
+                `Nome: ${nome}\n` +
+                `Cargo/Função: ${cargo}\n` +
+                `Empresa: ${empresa}\n` +
+                `CNPJ: ${cnpj}\n` +
+                `E-mail: ${email}\n` +
+                `WhatsApp: ${whatsapp}\n` +
+                `Segmento: ${segmento}\n` +
+                `Região de Interesse: ${regiao}\n` +
+                `Estrutura Atual / Marcas: ${mensagem}`;
+
+            const url = `https://wa.me/557999499579?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
