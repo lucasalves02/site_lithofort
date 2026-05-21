@@ -49,6 +49,40 @@
             padding: 0 20px;
         }
 
+        /* Product image styles */
+        .specs-wrapper {
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        /* Hero layout: badge + product image */
+        .hero-image-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-wrap {
+            flex: 0 0 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            max-width: 360px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            background: transparent;
+            padding: 0;
+            object-fit: contain;
+        }
+
         /* Header & Navigation */
         header {
             background-color: var(--primary);
@@ -223,6 +257,39 @@
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
             margin-bottom: 15px;
+        }
+
+        /* Responsive behavior: make image scale with window and match badge height */
+        .hero-image-container {
+            gap: 20px;
+            align-items: stretch;
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-badge,
+        .hero-image-wrap {
+            flex: 0 0 clamp(180px, 30vw, 360px);
+            max-width: clamp(180px, 30vw, 360px);
+            box-sizing: border-box;
+        }
+
+        .hero-image-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
         }
 
         .product-badge .tagline {
@@ -859,6 +926,9 @@
                             <li>Pronto para Uso!</li>
                         </ul>
                     </div>
+                    <div class="hero-image-wrap">
+                        <img src="assets/produto.png" alt="Lithofort - Produto" class="product-image">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1387,6 +1457,35 @@
             const url = `https://wa.me/557999499579?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
+
+        // Sincroniza a altura da imagem com a altura do product-badge para responsividade
+        function syncHeroImageHeight() {
+            const badge = document.querySelector('.product-badge');
+            const wrap = document.querySelector('.hero-image-wrap');
+            if (!badge || !wrap) return;
+
+            // Obtenha altura do badge e aplique ao wrapper da imagem
+            const h = badge.offsetHeight;
+            wrap.style.height = h + 'px';
+
+            const img = wrap.querySelector('.product-image');
+            if (img) {
+                img.style.maxHeight = (h) + 'px';
+            }
+        }
+
+        // Debounce simples
+        let _resizeTimer = null;
+        window.addEventListener('resize', function() {
+            clearTimeout(_resizeTimer);
+            _resizeTimer = setTimeout(syncHeroImageHeight, 80);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chamar após a carga completa para calcular alturas corretamente
+            syncHeroImageHeight();
+            setTimeout(syncHeroImageHeight, 250);
+        });
     </script>
 
 </body>
