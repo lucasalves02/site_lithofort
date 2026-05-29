@@ -1060,56 +1060,9 @@
                             <th style="width: 40%;">Época de Aplicação (Timing)</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="crop-name">Grandes Culturas<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Soja, Milho, Feijão)</span></td>
-                            <td>
-                                <ul>
-                                    <li><strong>Tratamento de Sementes (TS):</strong> 100g a 200g por 100 kg de sementes</li>
-                                    <li><strong>Foliar:</strong> 1,0 a 2,0 kg/ha</li>
-                                </ul>
-                            </td>
-                            <td>Aplicação foliar em estádios V4 a V6 para estimular a taxa fotossintética, e na Pré-Florescência / R1 para garantir a fixação de flores e reduzir o abortamento de vagens/grãos.</td>
-                        </tr>
-                        <tr>
-                            <td class="crop-name">Café e Citros</td>
-                            <td>
-                                <ul>
-                                    <li><strong>Produção de Mudas:</strong> 2g a 5g por Litro de água</li>
-                                    <li><strong>Foliar:</strong> 2,0 a 3,0 kg/ha</li>
-                                </ul>
-                            </td>
-                            <td>Mudas: via drench (a cada 15-30 dias).<br>Foliar: aplicação no preparo da florada (pós-colheita/limpeza) e no pós-vingamento dos frutos (estádio chumbinho).</td>
-                        </tr>
-                        <tr>
-                            <td class="crop-name">Fruticultura de Valor<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Mamão, Manga, Uva)</span></td>
-                            <td>
-                                <ul>
-                                    <li><strong>Foliar Contínuo:</strong> 1,5 a 2,5 g por Litro de água</li>
-                                    <li><strong>Fertirrigação:</strong> 2,0 a 4,0 kg/ha</li>
-                                </ul>
-                            </td>
-                            <td>Aplicações quinzenais ou mensais direcionadas de forma precisa para folhas novas e frutos em fase de expansão celular.</td>
-                        </tr>
-                        <tr>
-                            <td class="crop-name">Hortaliças de Fruto<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Tomate, Pimentão, etc)</span></td>
-                            <td>
-                                <ul>
-                                    <li><strong>Foliar:</strong> 2,0 a 3,0 g por Litro de calda</li>
-                                </ul>
-                            </td>
-                            <td>Frequência semanal ou quinzenal, iniciando desde o florescimento pleno até a maturação final dos frutos. Previne ativamente o "fundo preto".</td>
-                        </tr>
-                        <tr>
-                            <td class="crop-name">Folhosas<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">(Alface, Brócolis, etc)</span></td>
-                            <td>
-                                <ul>
-                                    <li><strong>Foliar:</strong> 1,5 a 2,0 g por Litro de calda</li>
-                                </ul>
-                            </td>
-                            <td>2 a 3 aplicações estrategicamente distribuídas ao longo do ciclo (pós-transplante, meio do ciclo produtivo e 7 dias antes da colheita final).</td>
-                        </tr>
-                    </tbody>
+                <tbody id="tabela-recomendacoes-corpo">
+                    <!-- O conteúdo será carregado dinamicamente via JavaScript (recomendacoes.json) -->
+                </tbody>
                 </table>
             </div>
         </div>
@@ -1391,7 +1344,41 @@
             if (inputCelular) {
                 inputCelular.addEventListener('input', formatarCelular);
             }
+
+            // Carrega as recomendações do arquivo JSON
+            carregarRecomendacoes();
         });
+
+        async function carregarRecomendacoes() {
+            try {
+                const resposta = await fetch('recomendacoes.json');
+                if (!resposta.ok) throw new Error('Falha ao carregar o JSON');
+                const dados = await resposta.json();
+                
+                const corpoTabela = document.getElementById('tabela-recomendacoes-corpo');
+                if (!corpoTabela) return;
+                
+                corpoTabela.innerHTML = ''; 
+
+                dados.forEach(item => {
+                    const linha = document.createElement('tr');
+                    const subtituloHtml = item.subtitulo ? `<br><span style="font-size:12px; color:var(--text-muted); font-weight:normal;">${item.subtitulo}</span>` : '';
+                    
+                    linha.innerHTML = `
+                        <td class="crop-name">${item.cultura}${subtituloHtml}</td>
+                        <td>${item.dosagem}</td>
+                        <td>${item.epoca}</td>
+                    `;
+                    corpoTabela.appendChild(linha);
+                });
+            } catch (erro) {
+                console.error('Erro ao carregar as recomendações:', erro);
+                const corpoTabela = document.getElementById('tabela-recomendacoes-corpo');
+                if (corpoTabela) {
+                    corpoTabela.innerHTML = '<tr><td colspan="3" style="text-align:center; padding: 20px;">Não foi possível carregar as informações. Verifique sua conexão ou se o arquivo JSON está presente.</td></tr>';
+                }
+            }
+        }
 
         function filtrarRevendas() {
             const filtro = document.getElementById('estado-filtro').value;

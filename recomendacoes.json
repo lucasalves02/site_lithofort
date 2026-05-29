@@ -1,0 +1,32 @@
+[
+  {
+    "cultura": "Grandes Culturas",
+    "subtitulo": "(Soja, Milho, Feijão)",
+    "dosagem": "<ul><li><strong>Tratamento de Sementes (TS):</strong> 100g a 200g por 100 kg de sementes</li><li><strong>Foliar:</strong> 1,0 a 2,0 kg/ha</li></ul>",
+    "epoca": "Aplicação foliar em estádios V4 a V6 para estimular a taxa fotossintética, e na Pré-Florescência / R1 para garantir a fixação de flores e reduzir o abortamento de vagens/grãos."
+  },
+  {
+    "cultura": "Café e Citros",
+    "subtitulo": "",
+    "dosagem": "<ul><li><strong>Produção de Mudas:</strong> 2g a 5g por Litro de água</li><li><strong>Foliar:</strong> 2,0 a 3,0 kg/ha</li></ul>",
+    "epoca": "Mudas: via drench (a cada 15-30 dias).<br>Foliar: aplicação no preparo da florada (pós-colheita/limpeza) e no pós-vingamento dos frutos (estádio chumbinho)."
+  },
+  {
+    "cultura": "Fruticultura de Valor",
+    "subtitulo": "(Mamão, Manga, Uva)",
+    "dosagem": "<ul><li><strong>Foliar Contínuo:</strong> 1,5 a 2,5 g por Litro de água</li><li><strong>Fertirrigação:</strong> 2,0 a 4,0 kg/ha</li></ul>",
+    "epoca": "Aplicações quinzenais ou mensais direcionadas de forma precisa para folhas novas e frutos em fase de expansão celular."
+  },
+  {
+    "cultura": "Hortaliças de Fruto",
+    "subtitulo": "(Tomate, Pimentão, etc)",
+    "dosagem": "<ul><li><strong>Foliar:</strong> 2,0 a 3,0 g por Litro de calda</li></ul>",
+    "epoca": "Frequência semanal ou quinzenal, iniciando desde o florescimento pleno até a maturação final dos frutos. Previne ativamente o \"fundo preto\"."
+  },
+  {
+    "cultura": "Folhosas",
+    "subtitulo": "(Alface, Brócolis, etc)",
+    "dosagem": "<ul><li><strong>Foliar:</strong> 1,5 a 2,0 g por Litro de calda</li></ul>",
+    "epoca": "2 a 3 aplicações estrategicamente distribuídas ao longo do ciclo (pós-transplante, meio do ciclo produtivo e 7 dias antes da colheita final)."
+  }
+]
