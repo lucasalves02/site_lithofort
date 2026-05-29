@@ -1,0 +1,45 @@
+[
+  {
+    "uf": "SE",
+    "estado": "Sergipe",
+    "nome": "Bioagro Soluções Agropecuárias",
+    "municipio": "Aracaju - SE",
+    "endereco": "Av. Chanceler Osvaldo Aranha, 746",
+    "whatsapp_url": "https://wa.me/5579998278540?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort.",
+    "whatsapp_display": "(79) 99827-8540"
+  },
+  {
+    "uf": "SE",
+    "estado": "Sergipe",
+    "nome": "Terra Fértil Agro",
+    "municipio": "Monte Alegre - SE",
+    "whatsapp_url": "https://wa.me/5579999769682?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort.",
+    "whatsapp_display": "(79) 99976-9682"
+  },
+  {
+    "uf": "SE",
+    "estado": "Sergipe",
+    "nome": "Rações San Lorenzo",
+    "municipio": "Nossa Senhora Aparecida - SE",
+    "whatsapp_url": "https://wa.me/5579999210286?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort.",
+    "whatsapp_display": "(79) 99921-0286"
+  },
+  {
+    "uf": "SE",
+    "estado": "Sergipe",
+    "nome": "Construagro Barbosa",
+    "municipio": "Itabaianinha - SE",
+    "endereco": "Rua Zacarias Alves, 59",
+    "whatsapp_url": "https://wa.me/5579999825080?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort.",
+    "whatsapp_display": "(79) 99982-5080"
+  },
+  {
+    "uf": "SE",
+    "estado": "Sergipe",
+    "nome": "Zezelo Fertilizantes",
+    "municipio": "Areia Branca - SE",
+    "endereco": "Povoado Serra Comprida",
+    "whatsapp_url": "https://wa.me/5579999643624?text=Ol%C3%A1%2C%20estou%20interessado%20no%20Lithofort.",
+    "whatsapp_display": "(79) 99964-3624"
+  }
+]

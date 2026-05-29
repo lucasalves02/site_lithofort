@@ -28,5 +28,41 @@
     "subtitulo": "(Alface, Brócolis, etc)",
     "dosagem": "<ul><li><strong>Foliar:</strong> 1,5 a 2,0 g por Litro de calda</li></ul>",
     "epoca": "2 a 3 aplicações estrategicamente distribuídas ao longo do ciclo (pós-transplante, meio do ciclo produtivo e 7 dias antes da colheita final)."
+  },
+  {
+    "cultura": "Substratos e Hidropónicos",
+    "subtitulo": "(Forragem Hidropónica, Mudas)",
+    "dosagem": "<ul><li><strong>Mistura em Substrato:</strong> 2,0 a 4,0 kg por m³ de substrato</li><li><strong>Via Solução/Drench:</strong> 1,5 a 2,5 g por Litro de água</li></ul>",
+    "epoca": "Substrato: Incorporação homogénea antes do plantio.<br>Solução: Aplicações semanais no sistema ou via drench na fase inicial de enraizamento (estudo de viabilidade/arranque rápido)."
+  },
+  {
+    "cultura": "Raízes e Tubérculos",
+    "subtitulo": "(Batata, Cenoura, Cebola, Alho)",
+    "dosagem": "<ul><li><strong>Foliar:</strong> 2,0 a 3,0 kg/ha</li><li><strong>Fertirrigação:</strong> 3,0 a 5,0 kg/ha</li></ul>",
+    "epoca": "Aplicações foliares no início do desenvolvimento vegetativo e intensificadas durante a fase de diferenciação e enchimento de tubérculos/bulbos (fase de expansão celular)."
+  },
+  {
+    "cultura": "Cana-de-Açúcar",
+    "subtitulo": "",
+    "dosagem": "<ul><li><strong>Sulco de Plantio:</strong> 5,0 a 10,0 kg/ha (aplicação líquida)</li><li><strong>Foliar:</strong> 2,0 a 4,0 kg/ha</li></ul>",
+    "epoca": "Sulco: Aplicação no momento do plantio junto com a adubação de base.<br>Foliar: Pulverização no início do perfilhamento pleno até o fechamento das entrelinhas."
+  },
+  {
+    "cultura": "Pastagens",
+    "subtitulo": "(Gramíneas Forrageiras)",
+    "dosagem": "<ul><li><strong>Foliar:</strong> 1,5 a 2,5 kg/ha</li></ul>",
+    "epoca": "Aplicação foliar estrategicamente distribuída logo após a saída dos animais (pós-pastejo rotacionado) ou após o corte mecânico, estimulando a taxa de rebrota."
+  },
+  {
+    "cultura": "Material Vegetativo",
+    "subtitulo": "(Toletes de Cana, Manivas)",
+    "dosagem": "<ul><li><strong>Tratamento de Material (Imersão):</strong> Solução a 1,0% a 2,0% (10g a 20g por Litro de água)</li></ul>",
+    "epoca": "Banho de imersão dos propágulos ou pulverização direta em cima dos toletes/manivas imediatamente antes do fechamento do sulco/cova de plantio."
+  },
+  {
+    "cultura": "Floricultura e Ornamentais",
+    "subtitulo": "(Flores de Corte, Plantas de Vaso)",
+    "dosagem": "<ul><li><strong>Foliar:</strong> 1,0 a 2,0 g por Litro de calda</li><li><strong>Via Drench:</strong> 2,0 a 3,0 g por Litro de água</li></ul>",
+    "epoca": "Aplicações quinzenais durante o desenvolvimento vegetativo e reforço na fase de pré-floração para garantir a rigidez das hastes e maior durabilidade pós-corte."
   }
 ]
